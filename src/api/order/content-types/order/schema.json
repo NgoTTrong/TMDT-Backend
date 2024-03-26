@@ -1,0 +1,47 @@
+{
+  "kind": "collectionType",
+  "collectionName": "orders",
+  "info": {
+    "singularName": "order",
+    "pluralName": "orders",
+    "displayName": "Order",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "customer": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::customer.customer",
+      "inversedBy": "orders"
+    },
+    "receiverName": {
+      "type": "string"
+    },
+    "receiverPhone": {
+      "type": "string"
+    },
+    "receiverAddress": {
+      "type": "string"
+    },
+    "orderStatus": {
+      "type": "enumeration",
+      "enum": [
+        "PENDING",
+        "CONFIRMED",
+        "DELIVERING",
+        "RECEIVED",
+        "CANCEL"
+      ]
+    },
+    "items": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::item.item",
+      "mappedBy": "order"
+    }
+  }
+}
